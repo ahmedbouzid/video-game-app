@@ -4,7 +4,7 @@
     <mat-select
       panelClass="sort-select"
       [(ngModel)]="sort"
-
+      (selectionChange)="searchGames(sort)"
     >
       <mat-option value="name">Name</mat-option>
       <mat-option value="-released">Released</mat-option>
@@ -17,21 +17,27 @@
   </mat-form-field>
 </div>
 <div class="games">
+  <ng-container *ngFor="let game of games">
   <div class="game">
     <div class="game-thumb-container">
-      <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2016/03/web-images.jpg?auto=format&q=60&w=1600&h=824&fit=crop&crop=faces"
+      <img
+        *ngIf="game.background_image"
+      src="{{game.background_image}} "
         class="game-thumbnail"
       alt="">
-
+      <p *ngIf="!game.background_image"></p>
     </div>
     <div class="game-description">
-      <p class="game-name">Name</p>
+      <p class="game-name"> {{game.name}} </p>
       <div class="game-platforms">
-        <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2016/03/web-images.jpg?auto=format&q=60&w=1600&h=824&fit=crop&crop=faces"
+        <img
+          *ngFor="let item of game.parent_platforms"
+        src="../../../assets/images/platforms/android.svg"
         class="game-platform"
         alt="">
 
       </div>
     </div>
   </div>
+</ng-container>
 </div>
