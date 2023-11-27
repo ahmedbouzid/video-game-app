@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="polyfills.js"></script>
+    <script src="runtime.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <app-calculator
+    widget-input="Custom Web compoent"
+    id="widget"
+    ></app-calculator>
+
+    <script>
+      document.getElementById('widget').addEventListener(
+        'widgetOutput' , (event) => {
+          document.getElementById("widgetResult").innerHTML=event.detail
+          console.log('====================================');
+          console.log(event.detail);
+          console.log('====================================');
+        }
+      )
+    </script>
+    <div id="widgetResult"></div>
+  </body>
+</html>

@@ -1,2 +1,6 @@
-<app-search-bar></app-search-bar>
-<router-outlet></router-outlet>
+<app-calculator [widgetInput]="'web component for test'"
+  (widgetOutput)="widgetOutput = $event"
+></app-calculator>
+<div>
+  {{'result : ' + widgetOutput}}
+</div>
